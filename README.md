@@ -12,7 +12,15 @@ En Home Assistant: **Configuración → Complementos → Tienda de complementos 
 https://github.com/Sysmika/replicator
 ```
 
-> El complemento todavía está en desarrollo y se publicará en este repositorio más adelante.
+Después aparece **Replicator** en la tienda: Instalar → Iniciar → queda en el menú lateral.
+
+## Complementos
+
+| Complemento | Qué hace |
+| --- | --- |
+| [Replicator](replicator/DOCS.md) | Stock, compras, vencimientos y gastos de la casa, con foto e IA. |
+
+Compatible con Home Assistant OS y Supervised en `aarch64` (Raspberry Pi 4/5 y similares) y `amd64` (mini PC).
 
 ## Licencia
 

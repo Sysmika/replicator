@@ -1,0 +1,12 @@
+{
+  "name": "replicator",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Replicator: add-on de Home Assistant para el stock y las compras de la casa (basado en madoval Casa).",
+  "main": "server.js",
+  "engines": { "node": ">=22.13" },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "DATA_DIR=./.dev DEV_USER=prueba PORT=8099 node server.js"
+  }
+}

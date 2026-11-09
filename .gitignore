@@ -1,0 +1,10 @@
+# Nunca subir claves, bases de datos ni configuraciones locales.
+.env
+*.env
+secrets/
+*.db
+*.db-*
+.dev/
+node_modules/
+logs/
+*.log

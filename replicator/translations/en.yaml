@@ -1,0 +1,22 @@
+configuration:
+  ia_habilitada:
+    name: Enable AI
+    description: Recognize products, receipts and bills from a photo. Requires this installation's AI key.
+  orion_gateway_url:
+    name: AI service URL
+    description: Do not change unless told by Orion.
+  orion_gateway_key:
+    name: AI key for this installation
+    description: Provided by Orion when the service is activated.
+  avisos_activos:
+    name: Due-date reminders to phones
+    description: Sends a daily summary of overdue or upcoming bills to the Home Assistant apps.
+  avisos_hora:
+    name: Reminder time
+    description: HH:MM format, for example 09:00.
+  avisos_celulares:
+    name: Phones that receive the reminder
+    description: notify services for each phone, e.g. notify.mobile_app_pixel.
+  avisos_compras:
+    name: Include shopping list
+    description: Adds how many products are missing when there are already bills to remind.

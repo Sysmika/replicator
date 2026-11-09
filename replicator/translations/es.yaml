@@ -1,0 +1,22 @@
+configuration:
+  ia_habilitada:
+    name: Activar la IA
+    description: Reconocer productos, tickets y facturas con foto. Necesita la clave de IA de esta instalación.
+  orion_gateway_url:
+    name: Dirección del servicio de IA
+    description: No cambiar salvo indicación de Orion.
+  orion_gateway_key:
+    name: Clave de IA de esta instalación
+    description: La entrega Orion al activar el servicio. Cada casa o comercio tiene la suya.
+  avisos_activos:
+    name: Avisos de vencimientos al celular
+    description: Cada día manda un resumen de lo vencido o por vencer a las apps de Home Assistant.
+  avisos_hora:
+    name: Hora del aviso
+    description: Formato HH:MM, por ejemplo 09:00.
+  avisos_celulares:
+    name: Celulares que reciben el aviso
+    description: "Servicios notify de cada celular, por ejemplo notify.mobile_app_pixel_de_juan (Herramientas para desarrolladores → Acciones)."
+  avisos_compras:
+    name: Sumar la lista de compras al aviso
+    description: Agrega cuántos productos faltan cuando ya hay vencimientos para avisar.
