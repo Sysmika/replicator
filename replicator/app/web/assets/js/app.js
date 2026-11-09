@@ -67,7 +67,8 @@
         : el('li', { class: 'card item pronto' }, ...cuerpo);
     }));
 
-    const nota = Ia.estado.casa ? null : el('p', { class: 'nota' }, 'La IA no está activa en esta instalación: podés cargar todo a mano.');
+    const nota = Ia.estado.casa ? null : el('button', { class: 'recordatorio', onclick: () => Perfil.abrir(montar, vistaPrincipal, state.usuario) },
+      '🔑 La IA no está activa: tocá acá para cargar la clave que te dio Orion. Mientras tanto podés cargar todo a mano.');
 
     $app.replaceChildren(
       el('header', { class: 'top inicio' },

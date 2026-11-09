@@ -15,13 +15,21 @@ El stock es **uno solo por casa**: todas las personas de la familia ven y modifi
 
 Después de instalarlo y arrancarlo aparece **Replicator** en el menú lateral de Home Assistant (también en la app del celular). No pide usuario ni clave: usa la persona que ya inició sesión en Home Assistant.
 
-## Configuración
+## Activar la IA
+
+La IA (reconocimiento por foto) se activa desde el propio Replicator, no desde esta pantalla:
+
+1. Abrí Replicator → tocá tu nombre arriba (Mi perfil) → **Servicio de IA**.
+2. Copiá el **código de esta instalación** y pasáselo a Orion para pedir la clave.
+3. Orion genera la clave para esa instalación. Pegala en el mismo lugar y tocá **Guardar clave**.
+
+La clave queda guardada solo en este Home Assistant y la app nunca la vuelve a mostrar (solo sus últimos 4 caracteres). Se puede reemplazar o quitar desde la misma pantalla. Sin clave, todo se puede cargar a mano.
+
+## Configuración del complemento
 
 | Opción | Para qué sirve |
 | --- | --- |
-| Activar la IA | Reconocimiento por foto. Sin IA, todo se puede cargar a mano. |
 | Dirección del servicio de IA | Dejar la que viene, salvo indicación de Orion. |
-| Clave de IA de esta instalación | La entrega Orion al activar el servicio. Cada casa o comercio tiene la suya. |
 | Avisos de vencimientos al celular | Cada día, a la hora elegida, manda un resumen de lo vencido o por vencer. |
 | Hora del aviso | Formato HH:MM. |
 | Celulares que reciben el aviso | Servicios `notify.mobile_app_...` de cada celular (Herramientas para desarrolladores → Acciones). |

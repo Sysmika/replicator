@@ -208,3 +208,6 @@ select { font: inherit; width: 100%; min-height: 44px; padding: 8px 10px; border
 .cal-leyenda .punto { display: inline-block; vertical-align: middle; }
 .punto.feriado { background: #d9a400; }
 .cal-ev.feriado { border-left: 4px solid #d9a400; }
+
+/* Replicator: código de instalación seleccionable de una vez */
+.codigo { font-family: ui-monospace, monospace; user-select: all; word-break: break-all; }

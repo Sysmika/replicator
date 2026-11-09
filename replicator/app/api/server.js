@@ -19,9 +19,7 @@ function cargarOpciones() {
   let o = {};
   try { o = JSON.parse(fs.readFileSync(path.join(DATA, 'options.json'), 'utf8')); } catch { /* fuera de HA: solo variables de entorno */ }
   const poner = (k, v) => { if (v !== undefined && v !== null && !(k in E)) E[k] = String(v); };
-  poner('IA_CASA_ENABLED', o.ia_habilitada);
   poner('ORION_GATEWAY_URL', o.orion_gateway_url);
-  poner('ORION_GATEWAY_KEY', o.orion_gateway_key);
   poner('AVISOS_ENABLED', o.avisos_activos);
   poner('AVISOS_HORA', o.avisos_hora);
   poner('AVISOS_COMPRAS', o.avisos_compras);
@@ -38,8 +36,44 @@ function instalacionId() {
   return id;
 }
 
+// ---- clave de IA: la carga el cliente desde el panel de Replicator (Mi perfil → Servicio de IA) ----
+// Orion la genera para cada instalación. Se guarda solo en /data/ia.json (dentro del Home Assistant del cliente)
+// y nunca se devuelve al navegador: la app solo ve los últimos 4 caracteres.
+const ARCHIVO_IA = path.join(DATA, 'ia.json');
+function aplicarClaveIA(clave) {
+  if (clave) { E.ORION_GATEWAY_KEY = clave; E.IA_CASA_ENABLED = 'true'; }
+  else { delete E.ORION_GATEWAY_KEY; E.IA_CASA_ENABLED = 'false'; }
+}
+function cargarClaveIA() {
+  try { aplicarClaveIA(JSON.parse(fs.readFileSync(ARCHIVO_IA, 'utf8')).clave || ''); }
+  catch { if (!E.ORION_GATEWAY_KEY) aplicarClaveIA(''); else E.IA_CASA_ENABLED = 'true'; } // sin archivo: variable de entorno (pruebas)
+}
+function estadoClaveIA() {
+  const k = E.ORION_GATEWAY_KEY || '';
+  return { configurada: !!k, termina: k ? k.slice(-4) : null, instalacion: E.INSTALACION_ID };
+}
+
+async function guardarClaveIA(req, res, usuario) {
+  const d = await leerJSON(req, 2000);
+  if (d.borrar === true) {
+    try { fs.unlinkSync(ARCHIVO_IA); } catch { /* ya no estaba */ }
+    aplicarClaveIA('');
+    console.log(`Clave de IA quitada por ${usuario.nombre}`);
+    return enviar(res, 200, { ok: true, ...estadoClaveIA() });
+  }
+  const clave = typeof d.clave === 'string' ? d.clave.trim() : '';
+  if (!/^[\x21-\x7e]{16,200}$/.test(clave)) return enviar(res, 400, { ok: false, error: 'La clave no tiene el formato esperado. Copiala completa, sin espacios.' });
+  const tmp = ARCHIVO_IA + '.tmp';
+  fs.writeFileSync(tmp, JSON.stringify({ clave, guardada: new Date().toISOString(), usuario: usuario.nombre }), { mode: 0o600 });
+  fs.renameSync(tmp, ARCHIVO_IA);
+  aplicarClaveIA(clave);
+  console.log(`Clave de IA cargada por ${usuario.nombre} (termina en ${clave.slice(-4)})`);
+  enviar(res, 200, { ok: true, ...estadoClaveIA() });
+}
+
 cargarOpciones();
 E.INSTALACION_ID = E.INSTALACION_ID || instalacionId();
+cargarClaveIA();
 
 const { abrir } = require('./db');
 const ia = require('./ia');
@@ -205,6 +239,8 @@ const server = http.createServer(async (req, res) => {
 
     if (req.method === 'GET' && ruta === '/api/me') return enviar(res, 200, { ok: true, usuario, ha: true });
     if (req.method === 'GET' && ruta === '/api/ia/estado') return enviar(res, 200, { ok: true, ia: ia.estado() });
+    if (req.method === 'GET' && ruta === '/api/config/ia') return enviar(res, 200, { ok: true, ...estadoClaveIA() });
+    if (req.method === 'POST' && ruta === '/api/config/ia') return await guardarClaveIA(req, res, usuario);
 
     if (req.method === 'GET' && ruta === '/api/avisos/estado') return enviar(res, 200, { ok: true, activo: avisos.activo(), hora: avisos.hora() });
     if (req.method === 'POST' && ruta === '/api/avisos/probar') return enviar(res, 200, await avisos.probar());

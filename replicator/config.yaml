@@ -1,5 +1,5 @@
 name: Replicator
-version: "0.1.0"
+version: "0.2.0"
 slug: replicator
 description: Stock, compras, vencimientos y gastos de la casa, con foto e IA
 url: https://github.com/Sysmika/replicator
@@ -16,17 +16,13 @@ panel_title: Replicator
 homeassistant_api: true   # avisos al celular por notify.mobile_app_*
 hassio_api: true          # leer el slug propio para que el aviso abra el panel
 options:
-  ia_habilitada: false
   orion_gateway_url: https://ia.orion.com.ar
-  orion_gateway_key: ""
   avisos_activos: false
   avisos_hora: "09:00"
   avisos_celulares: []
   avisos_compras: false
 schema:
-  ia_habilitada: bool
   orion_gateway_url: url
-  orion_gateway_key: password?
   avisos_activos: bool
   avisos_hora: match(^([01]\d|2[0-3]):[0-5]\d$)
   avisos_celulares:
