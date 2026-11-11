@@ -10,14 +10,13 @@ En Home Assistant: **Configuración → Complementos → Tienda de complementos 
 https://github.com/Sysmika/replicator
 ```
 
-Después aparecen los complementos en la tienda: Instalar → Iniciar → queda en el menú lateral.
+Después aparece **Replicator** en la tienda: Instalar → Iniciar → queda en el menú lateral.
 
 ## Complementos
 
 | Complemento | Qué hace |
 | --- | --- |
 | [Replicator](replicator/DOCS.md) | Stock, compras, vencimientos y gastos de la casa, con foto e IA. |
-| [Orion Gestión](orion_gestion/DOCS.md) | Abre el sistema de gestión Orion del cliente dentro de Home Assistant, sin pedir clave. |
 
 Compatible con Home Assistant OS y Supervised en `aarch64` (Raspberry Pi 4/5 y similares) y `amd64` (mini PC).
 
