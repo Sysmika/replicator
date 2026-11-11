@@ -1,0 +1,10 @@
+configuration:
+  sistema_url:
+    name: Management system URL
+    description: The customer's system web address, for example https://demo.orionar.cloud
+  api_key:
+    name: Installation API key
+    description: The Nexus API key Orion issued for this installation.
+  apertura:
+    name: How it opens
+    description: "marco: inside Home Assistant. ventana: in a new browser window (use it if the phone asks for a password)."
