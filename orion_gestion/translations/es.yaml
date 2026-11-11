@@ -1,0 +1,10 @@
+configuration:
+  sistema_url:
+    name: Dirección del sistema de gestión
+    description: La dirección web del sistema del cliente, por ejemplo https://demo.orionar.cloud
+  api_key:
+    name: API key de esta instalación
+    description: La API key de Nexus que entrega Orion para esta instalación.
+  apertura:
+    name: Cómo se abre
+    description: "marco: dentro de Home Assistant. ventana: en una ventana nueva del navegador (usar si en el celular pide clave)."

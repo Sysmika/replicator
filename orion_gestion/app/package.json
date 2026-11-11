@@ -1,0 +1,12 @@
+{
+  "name": "orion-gestion",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Orion Gestión: add-on de Home Assistant que abre el sistema de gestión Orion con la API key de la instalación Nexus.",
+  "main": "server.js",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "DATA_DIR=./.dev DEV_USER=prueba PORT=8099 node server.js"
+  }
+}
