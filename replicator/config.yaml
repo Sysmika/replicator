@@ -1,5 +1,5 @@
 name: Replicator
-version: "0.2.0"
+version: "0.2.1"
 slug: replicator
 description: Stock, compras, vencimientos y gastos de la casa, con foto e IA
 url: https://github.com/Sysmika/replicator
@@ -13,6 +13,7 @@ ingress: true
 ingress_port: 8099
 panel_icon: mdi:cart-variant
 panel_title: Replicator
+panel_admin: false     # lo usan las personas de la casa, que no son administradoras
 homeassistant_api: true   # avisos al celular por notify.mobile_app_*
 hassio_api: true          # leer el slug propio para que el aviso abra el panel
 options:

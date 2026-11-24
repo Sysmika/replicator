@@ -1,5 +1,9 @@
 # Cambios
 
+## 0.2.1
+
+- El panel aparece también para los usuarios de Home Assistant que no son administradores (las personas de la casa). En Nexus lo ven los clientes de Hogar; en el equipo demo, solo el usuario de Hogar.
+
 ## 0.2.0
 
 - La clave de IA se carga desde el panel de Replicator (Mi perfil → Servicio de IA), oculta y guardada solo en el Home Assistant del cliente. Ya no está en la configuración del complemento.
