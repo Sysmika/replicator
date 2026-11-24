@@ -2,7 +2,7 @@
 
 ## 0.2.1
 
-- El panel aparece también para los usuarios de Home Assistant que no son administradores (las personas de la casa). En Nexus lo ven los clientes de Hogar; en el equipo demo, solo el usuario de Hogar.
+- El panel se permite también a usuarios de Home Assistant que no son administradores. Lo usa el equipo demo de Nexus: el usuario de Hogar (`juan`) ve Replicator. En clientes reales el menú de Nexus sigue mostrando a los no administradores solo los dashboards.
 
 ## 0.2.0
 

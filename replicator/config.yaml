@@ -13,7 +13,7 @@ ingress: true
 ingress_port: 8099
 panel_icon: mdi:cart-variant
 panel_title: Replicator
-panel_admin: false     # lo usan las personas de la casa, que no son administradoras
+panel_admin: false     # equipo demo de Nexus: lo ve el usuario de Hogar, que no es administrador
 homeassistant_api: true   # avisos al celular por notify.mobile_app_*
 hassio_api: true          # leer el slug propio para que el aviso abra el panel
 options:
